@@ -1,0 +1,57 @@
+﻿@using SudentCRUDOracleDB.Models
+@model IEnumerable<Student>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style=" margin-top: 0.32rem; font-size: 2rem; font-weight: 700; text-transform: capitalize; color: #05364d; ">Index</h2>
+
+<a asp-controller="Home" asp-action="Create" class="btn btn-outline-success mt-2 mb-2">Create New</a>
+
+<table class="table table-dark table-striped-columns">
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            SName
+        </th>
+        <th>
+            Email
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.id
+            </td>
+            <td>
+                @item.Name
+            </td>
+            <td>
+                @item.Sname
+            </td>
+            <td>
+                @item.Email 
+            </td>
+            <td>
+                <div class="btn-group">
+                    <a asp-controller="Home" asp-action="Update" asp-route-Id="@item.id" class="btn btn-warning mr-1" style="width:100px">Update</a>
+                    <a asp-controller="Home" asp-action="Detail" asp-route-Id="@item.id" class="btn btn-info mr-1" style="width:100px">View</a>
+                    <a asp-controller="Home" asp-action="Delete" asp-route-Id="@item.id" class="btn btn-danger" style="width:100px">Delete</a>
+                </div>
+            </td>
+        </tr>
+
+
+    }
+
+</table>
